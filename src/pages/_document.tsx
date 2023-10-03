@@ -1,11 +1,17 @@
 import Document, { Html, Head, Main, NextScript } from "next/document"
-import { CONFIG } from "site.config"
+import CONFIG from "site.config"
+import CJK from "@libs/cjk"
 
 class MyDocument extends Document {
   render() {
     return (
       <Html lang={CONFIG.lang}>
         <Head>
+          <link
+            rel="stylesheet"
+            as="font"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css"
+          />
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="apple-touch-icon"
@@ -18,6 +24,9 @@ class MyDocument extends Document {
             title="RSS 2.0"
             href="/feed"
           ></link>
+          {/* theme setting */}
+          <meta name="theme-color" content={"#f1f3f5"} />
+
           {/* google search console */}
           {CONFIG.googleSearchConsole.enable === true && (
             <>
@@ -28,7 +37,7 @@ class MyDocument extends Document {
             </>
           )}
         </Head>
-        <body>
+        <body className="bg-day dark:bg-night">
           <Main />
           <NextScript />
         </body>

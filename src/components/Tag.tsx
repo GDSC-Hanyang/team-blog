@@ -1,6 +1,5 @@
-import styled from "@emotion/styled"
-import { useRouter } from "next/router"
-import React from "react"
+import { useRouter } from 'next/router'
+import React from 'react'
 
 type Props = {
   children: string
@@ -13,24 +12,13 @@ const Tag: React.FC<Props> = ({ children }) => {
     router.push(`/?tag=${value}`)
   }
   return (
-    <StyledWrapper onClick={() => handleClick(children)}>
+    <div
+      onClick={() => handleClick(children)}
+      className="text-xs text-gray-500 font-normal rounded-full bg-gray-200 px-2 py-1 cursor-pointer"
+    >
       {children}
-    </StyledWrapper>
+    </div>
   )
 }
 
 export default Tag
-
-const StyledWrapper = styled.div`
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray10};
-  background-color: ${({ theme }) => theme.colors.gray5};
-  cursor: pointer;
-`
